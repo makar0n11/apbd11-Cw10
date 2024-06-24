@@ -60,6 +60,7 @@ public class ApplicationContext : DbContext
             new() {IdPrescription = 2, IdMedicament = 2,Details = "nie wychodzic z domu przez tydzien", Dose = 4},
             new() {IdPrescription = 3, IdMedicament = 3,Details = "Prank", Dose = 1}
         });
+        
 
     }
 }

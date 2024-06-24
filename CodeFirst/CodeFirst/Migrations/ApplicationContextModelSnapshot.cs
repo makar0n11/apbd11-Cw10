@@ -73,6 +73,31 @@ namespace CodeFirst.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CodeFirst.Models.LoginModels.User", b =>
+                {
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Username");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("CodeFirst.Models.Medicament", b =>
                 {
                     b.Property<int>("IdMedicament")

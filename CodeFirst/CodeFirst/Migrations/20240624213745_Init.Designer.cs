@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirst.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240611104410_Init")]
+    [Migration("20240624213745_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -74,6 +74,31 @@ namespace CodeFirst.Migrations
                             FirstName = "Jack",
                             LastName = "Taylor"
                         });
+                });
+
+            modelBuilder.Entity("CodeFirst.Models.LoginModels.User", b =>
+                {
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Username");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CodeFirst.Models.Medicament", b =>

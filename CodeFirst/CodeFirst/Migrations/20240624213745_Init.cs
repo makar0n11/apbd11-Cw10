@@ -59,6 +59,21 @@ namespace CodeFirst.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Salt = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshTokenExp = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Username);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Prescriptions",
                 columns: table => new
                 {
@@ -183,6 +198,9 @@ namespace CodeFirst.Migrations
         {
             migrationBuilder.DropTable(
                 name: "PrescriptionMedicaments");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Medicaments");
